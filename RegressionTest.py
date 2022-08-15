@@ -19,12 +19,10 @@ X_test = sc.transform(X_test)
 y_train = np.array([y_train])
 y_test = np.array([y_test])
 
-print(X_train)
-print(y_train)
 
 regressor = ANN.NeuralNetwork(0.001,X_train.T.shape[0],'regression', 16)
-regressor.train(X_train.T,y_train, 10000)
-print(regressor.predict(X_test.T))
+regressor.train(X_train,y_train, 10000)
+print(regressor.predict(X_test))
 
 from sklearn.metrics import r2_score
-print(r2_score(y_test[0], regressor.predict(X_test.T)[0]))
+print(r2_score(y_test[0], regressor.predict(X_test)[0]))

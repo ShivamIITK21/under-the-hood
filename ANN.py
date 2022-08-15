@@ -3,7 +3,7 @@ import pandas as pd
 import activations as ac
 import costs
 
-class NeuralNetwork():
+class NeuralNetwork:
 
     def __init__(self, learning_rate:float, input_size:int, work:object, layerSize:int, params=0, output_size = 1):
 
@@ -86,6 +86,7 @@ class NeuralNetwork():
 
     def train(self, X, Y, epochs):
         params = self.initializeParameters()
+        X = X.T
 
         for i in range(0, epochs):
             A2, cache = self.forwardPropagation(params, X)
@@ -97,6 +98,7 @@ class NeuralNetwork():
         self.params = params
 
     def predict(self, X):
+        X = X.T
         pred = 0
         cache = 0
         if self.work == 'regression':
